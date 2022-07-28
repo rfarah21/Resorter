@@ -1,0 +1,23 @@
+﻿
+@model UserModel
+
+<h1>Sign In To Be Able To Book a Condo</h1>
+<form method="post">
+    <div class="border-bottom p-4 mt-5">
+        <div class="row pb-2">
+            <h2 class="text-primary">Join Us Today !</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email">Enter Your Email Below</label>
+            <input asp-for="Email" class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Password">Enter Your Password Below</label>
+            <input asp-for="Password" class="form-control"/>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:200px">Submit</button>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary" style=" width:300px">Back Home</a>
+
+    </div>
+</form>
