@@ -1,34 +1,39 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model IEnumerable<CondosModel>
-<h1>Please Confirm Below: </h1>
+@model BookingModel
+
+<h2>Please Confirm Below: </h2>
 <form method="post">
     <ul>
         <li>
             My email is @ViewBag.MyString
         </li>
         <li>
-            <label>The condo I would like to reserve is:</label>
-            <div class="box">
-                <select name="condoId">
-                    @{
-                        var val = 0;
-                    }
-                    @foreach(var obj in Model)                 
-                    {                       
-                        <option value="@val">@obj.condosId</option>
-                        val++;
-                    }
-                </select>
-            </div>
+          
+                
+            <select name="booking" id="booking" asp-for="userbookedId" class="form-control" >
+                  <option value="1" selected>1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>                
+            </select>
+
+           
         </li>
         <li>
-            <label>Date: </label>
-            <input type="date" id="DateOfReservation" name="Date" class="form-control" />
+             <label asp-for="dateForBooking"></label>
+            <input asp-for="dateForBooking" type="date" id="StartDate" name="StartDate" class="form-control" />
         </li>
+         
     </ul>
-<h2>Please Confirm Your Password Below</h2>
-<input type="password" asp-area="" asp-controller="Booking" asp-action="hjoz"/>
-<button action="submit">Click Me To Post W Please 3Milleh css I am Ugly</button>
+
+<a asp-controller="Condo" asp-action="Choose" class="btn btn-secondary" style=" width:300px">Reserve</a>
 </form>
+ 
+               <!--        var val = 0;
+                   
+                    foreach(var obj in Model)                 
+                                      
+                        <option value="val">obj.condosId</option>
+                        val++;
+            --> 

@@ -1,10 +1,41 @@
-﻿@{}
-<h1>@ViewBag.MyString</h1>
-<ul class="navbar-collapse collapse d-sm-block-inline-flex flex-sm-row-reverse">
-    <li class="nav-item">
-        <a class="nav-link text-black-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-    </li>
-    <li>
-        <p>@ViewBag.MyString</p>
-    </li>
-    </ul>
+﻿@model IEnumerable<BookingModel>
+
+@{
+ 
+}
+<h1>Your Reservations</h1>
+<br />
+<br /><br />
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Booking Number
+            </th>
+            <th>
+                Condo Number
+            <th>
+                Booking Date
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td width="30%">
+                    @obj.bookingId
+                </td>
+                <td width="30%">
+                    @obj.userbookedId
+                </td>
+                <td width="30%">
+                    @obj.dateForBooking
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+     
+
+      

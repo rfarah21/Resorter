@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ResortManager1._0.Data;
+using Resort_Management.Models;
 
 namespace Resort_Management.Controllers
 {
@@ -11,9 +12,14 @@ namespace Resort_Management.Controllers
             _db = db;
         }
         //GET
-        public IActionResult hjoz()
+       public IActionResult Choose()
         {
             return View();
+        }
+        public IActionResult Booking()
+        {
+            IEnumerable<BookingModel> objBookingList = _db.Bookings;
+            return View(objBookingList);
         }
 
         /*        [HttpPost]

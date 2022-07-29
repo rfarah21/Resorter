@@ -1,8 +1,10 @@
-﻿@model IEnumerable<CondosModel>
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<IdentityUser>
 @{
     ViewData["Title"] = "Index";
+    Layout = "../Shared/_LayoutAdmin.cshtml";
 }
-<h1>Reserve a Condo !</h1>
+<h1>All Registered Users</h1>
 <br />
 <div class="container">
   <div class="row">
@@ -50,13 +52,10 @@
     <thead>
         <tr>
             <th>
-                Condo Number
+                User ID
             </th>
             <th>
-                Condo Location
-            </th>
-            <th>
-                Condo Capacity
+                User Email
             </th>
         </tr>
     </thead>
@@ -65,19 +64,19 @@
         {
             <tr>
                 <td width="30%">
-                    @obj.condosId
+                    @obj.Id
                 </td>
                 <td width="30%">
-                    @obj.condosLocation
+                    @obj.Email
                 </td>
                 <td width="30%">
-                    @obj.condosCapacity
+                    @obj.PasswordHash
                 </td>
             </tr>
         }
     </tbody>
 </table>
-        <a asp-controller="Condo" asp-action="navigate" class="btn btn-secondary" style=" width:300px">Reserve a Condo</a>
+        <a asp-controller="Condo" asp-action="Choose" class="btn btn-secondary" style=" width:300px">Reserve a Condo</a>
 
         <!--<script>
         var display, value, dropdownlist;

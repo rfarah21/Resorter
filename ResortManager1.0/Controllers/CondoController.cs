@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Resort_Management.Models;
 using ResortManager1._0.Data;
@@ -19,18 +20,42 @@ namespace Resort_Management.Controllers
             IEnumerable<CondosModel> objCondosList = _db.Condos;
             return View(objCondosList);
         }
-/*        public IActionResult Choose() { 
-            return View();
-        }*/
-        public IActionResult Choose(CondosModel obj)
+
+        [HttpGet]
+        public async Task<IActionResult> Index(string search)
         {
-            IEnumerable<CondosModel> objCondosList = _db.Condos;
-            var user = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserSession"));
-            if (user.Equals("none")){
-                return View("~/Views/User/logIn.cshtml");
+            ViewData["GetCondoDetails"] = search;
+            var condoquery = from x in _db.Condos select x;
+            if (!string.IsNullOrEmpty(search))
+            {
+                condoquery = condoquery.Where(x => x.condosLocation.Contains(search));
             }
-            ViewBag.MyString = user;
-            return View(objCondosList);
+            return View(await condoquery.AsNoTracking().ToListAsync());
+
         }
+
+     
+       public IActionResult Choose(BookingModel obj)
+        {
+
+            //var user = JsonConvert.DeserializeObject(HttpContext.Session.GetString("User"));
+            /*           if (user.Equals("none")){
+                           return View("~/Views/Home/Index.cshtml");
+                       }*/
+            // ViewBag.MyString = user;
+            var test = obj.userbookedId;
+            obj.userbookedId = Int64.Parse(test);
+            _db.Bookings.Add(obj);
+            _db.SaveChanges();
+            return View();
+         
+        }
+        public IActionResult navigate(BookingModel obj)
+        {
+
+            return View("~/Views/Condo/Choose.cshtml");
+
+        }
+
     }
 }

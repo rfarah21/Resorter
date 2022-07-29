@@ -22,13 +22,12 @@ namespace Resort_Management.Controllers
             IEnumerable<UserModel> objUserList = _db.User;
             return View(objUserList);
         }
-
         public IActionResult Info()
         {
-            var user = JsonConvert.DeserializeObject(HttpContext.Session.GetString("UserSession"));
-            ViewBag.MyString = user;
-            return View();
+            IEnumerable<BookingModel> objCondosList = _db.Bookings;
+            return View(objCondosList);
         }
+
         //GET
         public IActionResult Create()
         {
@@ -60,8 +59,8 @@ namespace Resort_Management.Controllers
             if (userCheck != null) {
                 if (pwd.Equals(userCheck.Password)) {
                     //Set email into a session key
-                    HttpContext.Session.SetString("UserSession", JsonConvert.SerializeObject(user));
-                    return View("~/Views/Home/Index.cshtml");
+                    HttpContext.Session.SetString("AdminSession", JsonConvert.SerializeObject(user));
+                    return View("~/Views/RealUser/Index.cshtml");
                 }
             }
             return View();

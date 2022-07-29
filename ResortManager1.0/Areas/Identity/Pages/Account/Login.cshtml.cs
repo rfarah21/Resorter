@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace ResortManager1._0.Areas.Identity.Pages.Account
 {
@@ -115,6 +116,9 @@ namespace ResortManager1._0.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    var email = Input.Email;
+                    HttpContext.Session.SetString("User", JsonConvert.SerializeObject(email));
+                    var user = JsonConvert.DeserializeObject(HttpContext.Session.GetString("User")); 
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
