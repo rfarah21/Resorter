@@ -34,28 +34,13 @@ namespace Resort_Management.Controllers
 
         }
 
-     
-       public IActionResult Choose(BookingModel obj)
+/*        public IActionResult navigate(BookingModel obj)
         {
-
-            //var user = JsonConvert.DeserializeObject(HttpContext.Session.GetString("User"));
-            /*           if (user.Equals("none")){
-                           return View("~/Views/Home/Index.cshtml");
-                       }*/
-            // ViewBag.MyString = user;
-            var test = obj.userbookedId;
-            obj.userbookedId = Int64.Parse(test);
-            _db.Bookings.Add(obj);
-            _db.SaveChanges();
-            return View();
-         
-        }
-        public IActionResult navigate(BookingModel obj)
-        {
-
+            string user = Request.Cookies["email"];
+            ViewBag.MyString = user;
             return View("~/Views/Condo/Choose.cshtml");
 
-        }
+        }*/
 
     }
 }

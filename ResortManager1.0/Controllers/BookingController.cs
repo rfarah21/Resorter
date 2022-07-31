@@ -14,6 +14,8 @@ namespace Resort_Management.Controllers
         //GET
        public IActionResult Choose()
         {
+            string user = Request.Cookies["email"];
+            ViewBag.MyString = user;
             return View();
         }
         public IActionResult Booking()
@@ -22,6 +24,17 @@ namespace Resort_Management.Controllers
             return View(objBookingList);
         }
 
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Choose(BookingModel obj)
+        {
+            var test = obj.userbookedId;
+            _db.Bookings.Add(obj);
+            _db.SaveChanges();
+            return View();
+
+        }
         /*        [HttpPost]
                 [ValidateAntiForgeryToken]
                 public IActionResult hjoz(BookingModel obj)

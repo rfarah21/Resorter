@@ -1,0 +1,33 @@
+﻿
+@model BookingModel
+
+<h2>Please Confirm Below: </h2>
+<form method="post">
+    <ul>
+        <li>
+            My email is @ViewBag.MyString
+        </li>
+
+        <div class="mb-3">
+            <label asp-for="userbookedId">Booking Number</label>
+            <input asp-for="userbookedId" class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="dateForBooking">Booking time</label>
+            <input type="date" asp-for="dateForBooking" class="form-control"/>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:200px">Submit</button>
+         
+    </ul>
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-secondary" style=" width:300px">Back Home</a>
+</form>
+ 
+               <!--        var val = 0;
+                   
+                    foreach(var obj in Model)                 
+                                      
+                        <option value="val">obj.condosId</option>
+                        val++;
+            --> 

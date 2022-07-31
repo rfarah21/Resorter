@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace ResortManager1._0.Areas.Identity.Pages.Account
 {
@@ -116,9 +117,12 @@ namespace ResortManager1._0.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    var emailString = Request.Cookies["email"];
                     var email = Input.Email;
-                    HttpContext.Session.SetString("User", JsonConvert.SerializeObject(email));
-                    var user = JsonConvert.DeserializeObject(HttpContext.Session.GetString("User")); 
+                    CookieOptions options = new CookieOptions();
+                    options.Expires = DateTime.Now.AddDays(3);
+                    //var user = JsonConvert.DeserializeObject(HttpContext.Session.GetString("User"));  Sessions didnt work so we go for cookies
+                    Response.Cookies.Append("email", email.ToString(),options);
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
