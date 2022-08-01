@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KjJDd/SnvY6YWXeKUtubnIIIX5ZXPS7FiJ/b6a7BWcrRovEXcF0cjcYhRvFWCkCbgSYUtAkEO4giBu4MhOrb2g==",
+  "dgSpecHash": "dQEXqAHPu4W84Y1PpVa0rubG5G98Buf1d6T4JL+e11rP6+ixK5YFAPOYbXzJXwrOeFT3X1cQ5lPzsDD70Q6ARg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\Desktop\\ResortManager1.0\\ResortManager1.0\\ResortManager1.0.csproj",
+  "projectFilePath": "C:\\Users\\User\\Desktop\\ResortManager1.0\\Resorter\\ResortManager1.0\\ResortManager1.0.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
